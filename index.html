@@ -176,29 +176,24 @@
         <h2 id="1）常见的数据类型："><a href="#1）常见的数据类型：" class="headerlink" title="1）常见的数据类型："></a>1）常见的数据类型：</h2><p>整型<br>浮点型<br>布尔型<br>复数型<br>字符串型<br>我们工作中常用到整型、字符串</p>
 <h2 id="2）整型"><a href="#2）整型" class="headerlink" title="2）整型"></a>2）整型</h2><p>我们通常根据计算机中数据编码格式，将整型分为：二进制、八进制、十进制、十六进制四种类型。<br>进制间的转换<br>二进制转十进制：bin(int)=&gt;将十进制转为二进制   int(bin)=&gt;将二进制转为十进制<br>八进制转十进制：oct(int)=&gt;将十进制转为八进制   int(oct)=&gt;将八进制转为十进制<br>十六进制转十进制： hex(int)=&gt;将十进制转为十六进制，int(hex)=&gt;将十六进制转为十进制</p>
 <h2 id="3）运算符"><a href="#3）运算符" class="headerlink" title="3）运算符"></a>3）运算符</h2><p>算术运算符：+、-、*、/<br>在python中默认的数据类型时浮点型，因此在执行算术运算时5/2=2.5，而不是2.<br>%：两数进行求余运算，如果分子大于分母，得余数；如果分子小于分母，直接得分子。注意：只有分子除尽分母时，结果才返回0<br>//：两数相除取整数，注意，此处得到的整数，为结果的整数部分不进行四舍五入操作。<br><strong>：A</strong>B 数A连续相乘B次，也可以说数A 的B次幂<br>补充：</p>
-<p>###　1、对于数值运算的四舍五入操作<br>math包中的floor()和ceil()函数<br>import math<br>math.floor(3/2) =&gt;1   等同于 3//2    只舍不入     int(3/2)<br>math.ceil(3/2) =&gt;2    此处，只要有小数位就进位，不管小数部分是否大于等于5  只入不舍<br>round()函数进行四舍五入操作，round(数值[,保留小数位数])<br>round(1.5)=&gt;2<br>round(1.2)=&gt;1<br>round(1,4,1)=&gt;1.4  意味着保留小数点后一位</p>
+<h3 id="1、对于数值运算的四舍五入操作"><a href="#1、对于数值运算的四舍五入操作" class="headerlink" title="1、对于数值运算的四舍五入操作"></a>1、对于数值运算的四舍五入操作</h3><p>math包中的floor()和ceil()函数<br>import math<br>math.floor(3/2) =&gt;1   等同于 3//2    只舍不入     int(3/2)<br>math.ceil(3/2) =&gt;2    此处，只要有小数位就进位，不管小数部分是否大于等于5  只入不舍<br>round()函数进行四舍五入操作，round(数值[,保留小数位数])<br>round(1.5)=&gt;2<br>round(1.2)=&gt;1<br>round(1,4,1)=&gt;1.4  意味着保留小数点后一位</p>
 <h3 id="2、求幂运算"><a href="#2、求幂运算" class="headerlink" title="2、求幂运算"></a>2、求幂运算</h3><p>pow(2,3) =&gt;8 等同于2**3</p>
 <h3 id="3、求绝对值"><a href="#3、求绝对值" class="headerlink" title="3、求绝对值"></a>3、求绝对值</h3><p>abs(-10) =&gt; 10</p>
 <h3 id="4、求两数相除的商与余数"><a href="#4、求两数相除的商与余数" class="headerlink" title="4、求两数相除的商与余数"></a>4、求两数相除的商与余数</h3><p>divmod(5,3) =&gt;(1,2)    类似5%3=&gt;2</p>
 <h3 id="5、运算符"><a href="#5、运算符" class="headerlink" title="5、运算符"></a>5、运算符</h3><p>i = 10<br>i = i + 5  等同于  i+=5<br>i = i - 5  等同于  i-=5<br>i = i <em> 5  等同于  i</em>=5<br>i = i / 5  等同于  i/=5<br>i = i//5   等同于  i//=5<br>i = i <strong> 2 等同于  i</strong>=2<br>i = i % 3  等同于  i%=3</p>
-<h2 id="4-布尔型"><a href="#4-布尔型" class="headerlink" title="4)布尔型"></a>4)布尔型</h2><h3 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h3><p>python中布尔型分为True和False两种，但是在实际操作中我们也可以将其与1和0等同。</p>
-<h3 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h3><p>布尔型常用在逻辑运算和判断条件中，作为结果来使用。但是也可以参与算术运算，当进行算术运算时，True作为1、False作为0参与运算。</p>
-<h3 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h3><p>a = True     a + 1 =&gt; 2<br>b = False b + 1 =&gt;1<br>a + b =&gt; 1<br>注意：通常我们在python，不能将布尔型参与算术运算的。布尔型一般参加比较运算或逻辑运算，其返回值还是布尔型。<br>布尔型求非： not<br>not a =&gt; False<br>not b =&gt; True</p>
+<h2 id="4-布尔型"><a href="#4-布尔型" class="headerlink" title="4)布尔型"></a>4)布尔型</h2><p>python中布尔型分为True和False两种，但是在实际操作中我们也可以将其与1和0等同。<br>布尔型常用在逻辑运算和判断条件中，作为结果来使用。但是也可以参与算术运算，当进行算术运算时，True作为1、False作为0参与运算。<br>a = True     a + 1 =&gt; 2<br>b = False b + 1 =&gt;1<br>a + b =&gt; 1<br>注意：通常我们在python，不能将布尔型参与算术运算的。布尔型一般参加比较运算或逻辑运算，其返回值还是布尔型。<br>布尔型求非： not<br>not a =&gt; False<br>not b =&gt; True</p>
 <h2 id="5-精确的十进制"><a href="#5-精确的十进制" class="headerlink" title="5)精确的十进制"></a>5)精确的十进制</h2><p>在python中，我们通过阅读官方文档了解到，浮点数是一种近似值的表示，因此直接使用浮点数时常常出现精度丢失或不匹配情况发生。<br>python中提出了Decimal对象来进行解决，通过引入 import decimal生成一个decimal对象，将浮点数转换为decimal类型，可以支持完成对应的算术运算。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ from decimal import Decimal   <span class="comment"># 引入decimal包中的Deciaml对象</span></span><br><span class="line">f1 = 12.4556</span><br><span class="line">f2 = 24.3</span><br><span class="line">c = Decimal.from_float(f1)    <span class="comment"># 将浮点数转换为decimal对象</span></span><br><span class="line">a = Decimal(f1).quantize(Decimal(<span class="string">'0.00'</span>)) <span class="comment">#将浮点数转换为decimal对象，同时指定该数值的精度，保留小数点后两位，并自动完成四舍五入。</span></span><br><span class="line">b = Decimal(f2).quantize(Decimal(<span class="string">'0.00'</span>))</span><br><span class="line"><span class="built_in">print</span>((a*b).quantize(Decimal(<span class="string">'0.00'</span>)))</span><br></pre></td></tr></table></figure></p>
-<h2 id="6）字符串"><a href="#6）字符串" class="headerlink" title="6）字符串"></a>6）字符串</h2><h3 id="1、-1"><a href="#1、-1" class="headerlink" title="1、"></a>1、</h3><p>字符串声明，可以使用’’也可以使用””，他们都可以表示字符串内容。</p>
-<h3 id="2、-1"><a href="#2、-1" class="headerlink" title="2、"></a>2、</h3><p>比较运算符：&gt;、&lt;、==、!=、&gt;=、&lt;=<br>他们的返回值为布尔型，即True或False<br>字符串进行比较时，采用对应位置的逐字母进行比较，首先将字母转成ASCII码，然后根据码值进行比较大小。如果一旦出现一方的字母码值大于另一方，就结束比较。<br>提示：在键盘上，所有的字符的ASCII码值都小于a,b,c…..这些字母的码值<br>只有这四个字符的ASCII码值大于字母z的码值：’{‘、’|’、’}’、’~’，它们的码值从123-126</p>
-<h3 id="3、-1"><a href="#3、-1" class="headerlink" title="3、"></a>3、</h3><p>我们使用input()，允许进行交互式输入，默认input()输入的值类型为str字符串类型。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h3><p>字符串常用的方法</p>
-<h4 id="1）find-查找"><a href="#1）find-查找" class="headerlink" title="1）find() 查找"></a>1）find() 查找</h4><p>函数格式：str.find(子字符串[,开始索引位，结束索引位])<br>返回值：如果查找成功，则返回所查找内容在字符串中的索引位置，如果没有找到，返回-1.<br>注意：如果所查找的内容中，有多个相同的字母，只会返回第一个字母所在的索引位。比如：<br>str1 = ‘hello’<br>str1.find(‘ll’) =&gt; 2  该例中，’ll’在字符串中出现了两次，但只会返回第一次出现的索引位置。<br>为什么查找时，没有找到目标字符串的情况下会返回-1。其实，在find操作中，会对字符串进行扫描从字符串的索引位0开始，一直到字符串结尾，如果在字符串最后一位没有找到匹配的内容，将指向字符串结束符(EOF)，该结束符为-1。所以找不到时，find返回值为-1.<br>更多用法：<br>string1 = ‘apple,banana,apple,apple’</p>
+<h2 id="6）字符串"><a href="#6）字符串" class="headerlink" title="6）字符串"></a>6）字符串</h2><p>字符串声明，可以使用’’也可以使用””，他们都可以表示字符串内容。<br>比较运算符：&gt;、&lt;、==、!=、&gt;=、&lt;=<br>他们的返回值为布尔型，即True或False<br>字符串进行比较时，采用对应位置的逐字母进行比较，首先将字母转成ASCII码，然后根据码值进行比较大小。如果一旦出现一方的字母码值大于另一方，就结束比较。<br>(提示：在键盘上，所有的字符的ASCII码值都小于a,b,c…..这些字母的码值)<br>只有这四个字符的ASCII码值大于字母z的码值：’{‘、’|’、’}’、’~’，它们的码值从123-126<br>我们使用input()，允许进行交互式输入，默认input()输入的值类型为str字符串类型。<br>字符串常用的方法:</p>
+<h3 id="1）find-查找"><a href="#1）find-查找" class="headerlink" title="1）find() 查找"></a>1）find() 查找</h3><p>函数格式：str.find(子字符串[,开始索引位，结束索引位])<br>返回值：如果查找成功，则返回所查找内容在字符串中的索引位置，如果没有找到，返回-1.<br>注意：如果所查找的内容中，有多个相同的字母，只会返回第一个字母所在的索引位。比如：<br>str1 = ‘hello’<br>str1.find(‘ll’) =&gt; 2  该例中，’ll’在字符串中出现了两次，但只会返回第一次出现的索引位置。<br>为什么查找时，没有找到目标字符串的情况下会返回-1。其实，在find操作中，会对字符串进行扫描从字符串的索引位0开始，一直到字符串结尾，如果在字符串最后一位没有找到匹配的内容，将指向字符串结束符(EOF)，该结束符为-1。所以找不到时，find返回值为-1.<br>更多用法：<br>string1 = ‘apple,banana,apple,apple’<br>string1.find(‘apple’)  #结果为0</p>
 <blockquote>
 <blockquote>
 <blockquote>
-<p>string1.find(‘apple’)<br>0<br>string1.find(‘apple’,5)<br>13<br>string1.find(‘apple’,7,20)<br>13<br>string1.find(‘apple’,14,20)<br>-1<br>string1.find(‘apple’,14,24)<br>19</p>
+<p>string1.find(‘apple’,5)<br>13<br>string1.find(‘apple’,7,20)<br>13<br>string1.find(‘apple’,14,20)<br>-1<br>string1.find(‘apple’,14,24)<br>19</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <p>对比：<br>index() 返回指定字符的索引位<br>函数格式：index(子字符串[,开始索引位，结束索引位])<br>返回值：如果找到指定的字符串，则返回其索引位；如果找不到就报错ValueError<br>string1.index(‘apple’,0,8)=&gt;0<br>find()与index()函数的区别<br>第一，两者在执行结果时类似的，如果找到指定的字符就会返回其索引位<br>第二，find()如果找不到指定的字符时，返回-1；而index()找不到指定的字符，raise ValueError.<br>第三，从效率上来讲，index的查询速度要优于find,因为在python中对于像字符串这样的有序数据类型，会产生一个索引对象来自动维护其序列，find()函数不管是否有这样的序列，都需要在字符串本身进行逐一查找，而index()会通过这个索引对象的映射方式，来快速找到对应的索引位。</p>
-<h4 id="2）split-拆分字符串"><a href="#2）split-拆分字符串" class="headerlink" title="2）split() 拆分字符串"></a>2）split() 拆分字符串</h4><p>函数格式：str.split([分隔符])<br>返回值：根据指定的分隔符，对字符串进行拆分，返回一个列表；如果不指定分隔符，那么会将整个字符串，作为列表的一个元素。例如：<br>string1 = ‘tv,pc,notebook,phone’</p>
+<h3 id="2）split-拆分字符串"><a href="#2）split-拆分字符串" class="headerlink" title="2）split() 拆分字符串"></a>2）split() 拆分字符串</h3><p>函数格式：str.split([分隔符])<br>返回值：根据指定的分隔符，对字符串进行拆分，返回一个列表；如果不指定分隔符，那么会将整个字符串，作为列表的一个元素。例如：<br>string1 = ‘tv,pc,notebook,phone’</p>
 <blockquote>
 <blockquote>
 <blockquote>
@@ -206,7 +201,7 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<h4 id="3）strip"><a href="#3）strip" class="headerlink" title="3）strip()"></a>3）strip()</h4><p>字符串左右两端去除指定字符（默认情况，去除空格）<br>函数格式：str.strip([指定字符])<br>返回值：根据指定的字符，对字符串进行两端去除其内容，返回一个新的字符串。如果字符串中间有空格或指定字符，那么该函数不起作用。如果指定的字符在字符串左右两端不存在，那么将返回字符串本身。<br>例如：<br>缺省情况<br>string1 = ‘  hello world  ‘</p>
+<h3 id="3）strip"><a href="#3）strip" class="headerlink" title="3）strip()"></a>3）strip()</h3><p>字符串左右两端去除指定字符（默认情况，去除空格）<br>函数格式：str.strip([指定字符])<br>返回值：根据指定的字符，对字符串进行两端去除其内容，返回一个新的字符串。如果字符串中间有空格或指定字符，那么该函数不起作用。如果指定的字符在字符串左右两端不存在，那么将返回字符串本身。<br>例如：<br>缺省情况<br>string1 = ‘  hello world  ‘</p>
 <blockquote>
 <blockquote>
 <blockquote>
@@ -222,7 +217,7 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<h4 id="4）replace-替换函数"><a href="#4）replace-替换函数" class="headerlink" title="4）replace()替换函数"></a>4）replace()替换函数</h4><p>函数格式：str.replace(old,new[,max])<br>返回值：将指定字符串（old）替换为新字符串（new）,最大可以替换max次。替换完成后，返回一个新字符串。<br>注意：此处的max参数，主要用来指定替换的次数，如果该参数缺省，表示替换里面所有符合条件的字符串。<br>例如：<br>string1 = ‘honor,oppo,vivo,apple,oppo,oppo’</p>
+<h3 id="4）replace-替换函数"><a href="#4）replace-替换函数" class="headerlink" title="4）replace()替换函数"></a>4）replace()替换函数</h3><p>函数格式：str.replace(old,new[,max])<br>返回值：将指定字符串（old）替换为新字符串（new）,最大可以替换max次。替换完成后，返回一个新字符串。<br>注意：此处的max参数，主要用来指定替换的次数，如果该参数缺省，表示替换里面所有符合条件的字符串。<br>例如：<br>string1 = ‘honor,oppo,vivo,apple,oppo,oppo’</p>
 <blockquote>
 <blockquote>
 <blockquote>
@@ -235,8 +230,8 @@
 <p>string1 = hello world<br>string1[0:3] =&gt; hel   从索引位为0的字符开始，到索引位3结束，但不包括索引位3所指向的字符。<br>string1[2:4] =&gt; ll<br>string1[0:-1] =&gt; hello worl<br>string1[0:8:2] =&gt; hlow</p>
 <p>str1[:]  =&gt; ‘hello world’ 等于将字符串进行复制<br>str1[:5] =&gt; ‘hello’       如果没有标明开始索引位，默认从0开始<br>str1[::] =&gt; ‘hello world’  等同于str1[:]</p>
 <p>使用步长，实现字符串反转<br>string1[-1::-1]  =&gt;dlrow olleh    从索引位-1开始，一直到字符串结束，反向输出字符<br>但是下列操作，会返回一个空字符串：<br>string1[-1:4]  =&gt; ‘’<br>string1[-1:-5] =&gt; ‘’</p>
-<h4 id="7）连接符与重复操作符"><a href="#7）连接符与重复操作符" class="headerlink" title="7）连接符与重复操作符"></a>7）连接符与重复操作符</h4><p>+：在字符串中使用时，作为连接两个字符串，并返回一个新字符串的作用来使用。<br><em>：重复操作指定的次数，即将字符串重复输出N次。返回一个新字符串。<br>注意：在重复操作中，必须遵循：字符串</em>正整数这样的格式，如果数值不是正整数，其结果返回一个空字符串，如果不是数值类型，程序报错。</p>
-<h4 id="8）in运算符"><a href="#8）in运算符" class="headerlink" title="8）in运算符"></a>8）in运算符</h4><p>用来检测指定的内容，是否在字符串中，如果存在则返回True，反之返回False<br>例如:<br>string1 = ‘hello world’</p>
+<h3 id="7）连接符与重复操作符"><a href="#7）连接符与重复操作符" class="headerlink" title="7）连接符与重复操作符"></a>7）连接符与重复操作符</h3><p>+：在字符串中使用时，作为连接两个字符串，并返回一个新字符串的作用来使用。<br><em>：重复操作指定的次数，即将字符串重复输出N次。返回一个新字符串。<br>注意：在重复操作中，必须遵循：字符串</em>正整数这样的格式，如果数值不是正整数，其结果返回一个空字符串，如果不是数值类型，程序报错。</p>
+<h3 id="8）in运算符"><a href="#8）in运算符" class="headerlink" title="8）in运算符"></a>8）in运算符</h3><p>用来检测指定的内容，是否在字符串中，如果存在则返回True，反之返回False<br>例如:<br>string1 = ‘hello world’</p>
 <blockquote>
 <blockquote>
 <blockquote>
