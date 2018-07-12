@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="记录">
 <meta property="og:description" content="一、Python基础1、编码：在开发过程，对应不同的语言使用不同的字符编码。英文    ISO-8859-1中文    gbk或gb2312目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码 2、print()函数语法格式：print(value,…,sep=’ ‘,end=’\n’)其中，value代表我们要输出的内容，可以是字符串，可以是数值等内容sep代表输出多个值之间">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-12T00:45:16.370Z">
+<meta property="og:updated_time" content="2018-07-12T00:52:41.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一篇博客">
 <meta name="twitter:description" content="一、Python基础1、编码：在开发过程，对应不同的语言使用不同的字符编码。英文    ISO-8859-1中文    gbk或gb2312目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码 2、print()函数语法格式：print(value,…,sep=’ ‘,end=’\n’)其中，value代表我们要输出的内容，可以是字符串，可以是数值等内容sep代表输出多个值之间">
@@ -177,8 +177,7 @@
       
         <h2 id="一、Python基础"><a href="#一、Python基础" class="headerlink" title="一、Python基础"></a>一、Python基础</h2><h3 id="1、编码："><a href="#1、编码：" class="headerlink" title="1、编码："></a>1、编码：</h3><p>在开发过程，对应不同的语言使用不同的字符编码。<br>英文    ISO-8859-1<br>中文    gbk或gb2312<br>目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码</p>
 <h3 id="2、print-函数"><a href="#2、print-函数" class="headerlink" title="2、print()函数"></a>2、print()函数</h3><p>语法格式：print(value,…,sep=’ ‘,end=’\n’)<br>其中，value代表我们要输出的内容，可以是字符串，可以是数值等内容<br>sep代表输出多个值之间的间隔符，默认使用空格隔开。我们可以重新定义间隔符。<br>end代表输出语句的结束标识，默认使用了换行，我们可以重新定义其他内容，其输出的内容将不再进行换行操作。</p>
-<p>###3、print()函数的基本使用<br>print()常用输出方式：<br>print(‘hello ‘)、print(123456)等<br>参数格式输出<br>%s：代表了字符串内容，其中</p>
-<p>print(‘welcome %s’%Beijing)=&gt;welcome Beijing<br>print(‘welcome %10.3s’%Beijing)=&gt;welcome       Bei,输出结果为10个字符其中包含字符串Beijing中前三个，其余用空格填充<br>%d：代表了整数内容，其中<br>print(‘price %d’%10)=&gt;price 10<br>print(‘price %d’%10.5) =&gt; price 10<br>print(‘price %3d’%10000)=&gt; price 10000<br>注意这里面的3d表示输出一个宽度为3个单元的数值，如果数值长度小于三，那么数值靠右对齐。<br>-3d表示，数值反向对齐（靠左对齐）<br>%f：代表了浮点数内容(注意，在Python中浮点数是一个近似值，所以结果也是近似)<br>print(‘price %f’%10.2)=&gt;10.200000<br>print(‘price %.1f’%10.2) =&gt; 10.2<br>print(‘prince %.1f’%10.58) = &gt;10.6 当取一位小数位的时候，将小数位第二位进行舍入操作，但是Python的中间值不是5，导致当小数位第二位是5时，直接被舍去<br>print(‘%5.1f’%10.3) =&gt; 10.3<br>输出一个宽度为5的单位，其中整数3位，小数部分1位，小数点占一位<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
+<p>###3、print()函数的基本使用<br>print()常用输出方式：<br>print(‘hello ‘)、print(123456)等<br>参数格式输出<br>%s：代表了字符串内容，其中<br>print(‘welcome %s’%Beijing)=&gt;welcome Beijing<br>print(‘welcome %10.3s’%Beijing)=&gt;welcome       Bei,输出结果为10个字符其中包含字符串Beijing中前三个，其余用空格填充<br>%d：代表了整数内容，其中<br>print(‘price %d’%10)=&gt;price 10<br>print(‘price %d’%10.5) =&gt; price 10<br>print(‘price %3d’%10000)=&gt; price 10000<br>注意这里面的3d表示输出一个宽度为3个单元的数值，如果数值长度小于三，那么数值靠右对齐。<br>-3d表示，数值反向对齐（靠左对齐）<br>%f：代表了浮点数内容(注意，在Python中浮点数是一个近似值，所以结果也是近似)<br>print(‘price %f’%10.2)=&gt;10.200000<br>print(‘price %.1f’%10.2) =&gt; 10.2<br>print(‘prince %.1f’%10.58) = &gt;10.6 当取一位小数位的时候，将小数位第二位进行舍入操作，但是Python的中间值不是5，导致当小数位第二位是5时，直接被舍去<br>print(‘%5.1f’%10.3) =&gt; 10.3<br>输出一个宽度为5的单位，其中整数3位，小数部分1位，小数点占一位<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
 
       
 
