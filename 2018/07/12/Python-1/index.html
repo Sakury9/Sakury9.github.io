@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="记录">
 <meta property="og:description" content="1）常见的数据类型：整型浮点型布尔型复数型字符串型我们工作中常用到整型、字符串 2）整型我们通常根据计算机中数据编码格式，将整型分为：二进制、八进制、十进制、十六进制四种类型。进制间的转换二进制转十进制：bin(int)=&amp;gt;将十进制转为二进制   int(bin)=&amp;gt;将二进制转为十进制八进制转十进制：oct(int)=&amp;gt;将十进制转为八进制   int(oct)=&amp;gt;将八进制转">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-12T14:10:07.972Z">
+<meta property="og:updated_time" content="2018-07-13T00:51:17.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python数据类型">
 <meta name="twitter:description" content="1）常见的数据类型：整型浮点型布尔型复数型字符串型我们工作中常用到整型、字符串 2）整型我们通常根据计算机中数据编码格式，将整型分为：二进制、八进制、十进制、十六进制四种类型。进制间的转换二进制转十进制：bin(int)=&amp;gt;将十进制转为二进制   int(bin)=&amp;gt;将二进制转为十进制八进制转十进制：oct(int)=&amp;gt;将十进制转为八进制   int(oct)=&amp;gt;将八进制转">
@@ -199,7 +199,7 @@
 <p>string1 = hello world<br>string1[0:3] =&gt; hel   从索引位为0的字符开始，到索引位3结束，但不包括索引位3所指向的字符。<br>string1[2:4] =&gt; ll<br>string1[0:-1] =&gt; hello worl<br>string1[0:8:2] =&gt; hlow</p>
 <p>str1[:]  =&gt; ‘hello world’ 等于将字符串进行复制<br>str1[:5] =&gt; ‘hello’       如果没有标明开始索引位，默认从0开始<br>str1[::] =&gt; ‘hello world’  等同于str1[:]</p>
 <p>使用步长，实现字符串反转<br>string1[-1::-1]  =&gt;dlrow olleh    从索引位-1开始，一直到字符串结束，反向输出字符<br>但是下列操作，会返回一个空字符串：<br>string1[-1:4]  =&gt; ‘’<br>string1[-1:-5] =&gt; ‘’</p>
-<h3 id="7）连接符与重复操作符"><a href="#7）连接符与重复操作符" class="headerlink" title="7）连接符与重复操作符"></a>7）连接符与重复操作符</h3><p>+：在字符串中使用时，作为连接两个字符串，并返回一个新字符串的作用来使用。<br><em>：重复操作指定的次数，即将字符串重复输出N次。返回一个新字符串。<br>注意：在重复操作中，必须遵循：字符串</em>正整数这样的格式，如果数值不是正整数，其结果返回一个空字符串，如果不是数值类型，程序报错。</p>
+<h3 id="7）连接符与重复操作符"><a href="#7）连接符与重复操作符" class="headerlink" title="7）连接符与重复操作符"></a>7）连接符与重复操作符</h3><p>+：在字符串中使用时，作为连接两个字符串，并返回一个新字符串的作用来使用。<br>*：重复操作指定的次数，即将字符串重复输出N次。返回一个新字符串。<br>注意：在重复操作中，必须遵循：字符串*正整数这样的格式，如果数值不是正整数，其结果返回一个空字符串，如果不是数值类型，程序报错。</p>
 <h3 id="8）in运算符"><a href="#8）in运算符" class="headerlink" title="8）in运算符"></a>8）in运算符</h3><p>用来检测指定的内容，是否在字符串中，如果存在则返回True，反之返回False<br>例如:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">string1 = <span class="string">'hello world'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>substr = <span class="string">'e'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>substr <span class="keyword">in</span> string1</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>substr = <span class="string">'ll'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>substr <span class="keyword">in</span> string1</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">substr = <span class="string">'wr'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>substr <span class="keyword">in</span> string1</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
 
       
