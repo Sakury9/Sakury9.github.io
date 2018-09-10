@@ -153,6 +153,242 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python-10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/python-10/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/10/python-10/" class="archive-article-date">
+  	<time datetime="2018-09-10T12:08:09.637Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>$ winpty mongo</p>
+<p><code>查看数据库</code><br>show dbs</p>
+<p><code>新建（选中）数据库</code><br>use py06db</p>
+<p><code>查看使用的数据库</code><br>db</p>
+<p><code>没有集合的话不会有提示</code><br>show collections</p>
+<p><code>查看当前指定数据库状态</code><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">db.stats()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"db"</span> : <span class="string">"py06db"</span>,</span><br><span class="line">        <span class="string">"collections"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"views"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"objects"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"avgObjSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"dataSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"storageSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"numExtents"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexes"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"indexSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fileSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsUsedSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"fsTotalSize"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"ok"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>查看当前数据库的连接端口号<br>db.getMongo()<br>connection to 127.0.0.1:27017</p>
+<p>创建Collection<br>db.createCollection(“pyuser”)<br>{ “ok” : 1 }</p>
+<p>查看所有集合<br> show collections</p>
+<p>添加数据<br>&gt; post={“name”:”Pony Ma”, “age”:45, “sex”:”M”, “marry”:true, “date”:new Date()}<br>{<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
+<p>插入</p>
+<blockquote>
+<p>db.pyuser.insert(post)<br>WriteResult({ “nInserted” : 1 })</p>
+</blockquote>
+<p>将其格式化使其变的可视化</p>
+<blockquote>
+<p>db.pyuser.find().pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
+</blockquote>
+<p>数据库的操作方法<br>db.py06db.help()</p>
+<p>去重</p>
+<blockquote>
+<p>db.pyuser.distinct(‘name’)<br>[ “Pony Ma”, “Jack Ma” ]</p>
+</blockquote>
+<p>通过条件进行匹配</p>
+<blockquote>
+<p>db.pyuser.find({age:45})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
+</blockquote>
+<p>大于（小于是$lt）</p>
+<blockquote>
+<p>db.pyuser.find({age:{$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
+</blockquote>
+<p>小于55，大于45岁（，表示并且的意思）</p>
+<blockquote>
+<p>db.pyuser.find({age:{$lt:55,$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
+</blockquote>
+<p>比较运算符(在mongodb中必须加$)<br>lt &lt;<br>gt &gt;<br>lte &lt;=<br>gte &gt;=</p>
+<p>通过关键字查询</p>
+<blockquote>
+<p>db.pyuser.find({name:/Ma/}).pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
+</blockquote>
+<p>查询名字以J开头的</p>
+<blockquote>
+<p>db.pyuser.find({name:/^J/}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
+</blockquote>
+<p>只取字段name（1表示True）（第一个{}为查询条件）</p>
+<blockquote>
+<p>db.pyuser.find({},{name:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma” }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma” }</p>
+</blockquote>
+<p>查询除了name的字段值 （false等同于0）</p>
+<blockquote>
+<p>db.pyuser.find({},{name:false})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “age” : 45, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “age” : 50 }<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
+</blockquote>
+<p>显示name和age</p>
+<blockquote>
+<p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45 }</p>
+</blockquote>
+<p>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
+<p>查询满足条件的指定字段</p>
+<blockquote>
+<p>db.pyuser.find({age:50},{name:1,age:1})<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<p>排序（1表示升序，-1表示降序）</p>
+<blockquote>
+<p>db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
+</blockquote>
+<p>查询前三条信息</p>
+<blockquote>
+<p>db.pyuser.find().limit(3)<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
+</blockquote>
+<p>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
+<p>第三条以后的数据</p>
+<blockquote>
+<p>db.pyuser.find().skip(3)</p>
+</blockquote>
+<p>从第三条开始再查询三条数据</p>
+<blockquote>
+<p>db.pyuser.find().skip(3).limit(3)</p>
+</blockquote>
+<p>查看所有45岁的</p>
+<blockquote>
+<p>db.pyuser.find({$or:[{age:45}]})</p>
+</blockquote>
+<p>统计数据总条数（默认最大显示20条，it可显示剩余信息）</p>
+<blockquote>
+<p>db.pyuser.count()<br>8</p>
+</blockquote>
+<p>查询满足条件的有多少条信息</p>
+<blockquote>
+<p>db.pyuser.find({age:45}).count()<br>6</p>
+</blockquote>
+<p>删表</p>
+<blockquote>
+<p>db.py01tab.drop()<br>true</p>
+</blockquote>
+<hr>
+<p>设置固定大小的集合(capped:true固定表，remove不能删除一个固定表）（数据先进先出）</p>
+<blockquote>
+<p>db.createCctio(‘py01tab’{capped:true,size:1024,max:3})<br>{ “ok” : 1 }<br>添加数据<br>db.py01tab.insert({“name”:”one”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”two”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”three”})<br>WriteResult({ “nInserted” : 1 })<br>查看<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d176b67cb1d3e3e7966e”), “name” : “one” }<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }<br>db.py01tab.insert({“name”:”four”})<br>WriteResult({ “nInserted” : 1 })<br>第一条数据被新加的数据顶出<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }</p>
+</blockquote>
+<h2 id="“-id”-ObjectId-“5b90d1b3b67cb1d3e3e79671”-“name”-“four”"><a href="#“-id”-ObjectId-“5b90d1b3b67cb1d3e3e79671”-“name”-“four”" class="headerlink" title="{ “_id” : ObjectId(“5b90d1b3b67cb1d3e3e79671”), “name” : “four” }"></a>{ “_id” : ObjectId(“5b90d1b3b67cb1d3e3e79671”), “name” : “four” }</h2><p>插入数据<br>表和数据一起创建（insert）</p>
+<blockquote>
+<p>db.py02tab.insert({“name”:”Pony Ma”,”age”:45})<br>WriteResult({ “nInserted” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d2f5b67cb1d3e3e79672”), “name” : “Pony Ma”, “age” : 45 }</p>
+</blockquote>
+<p>保存添加(save)</p>
+<blockquote>
+<p>db.py02tab.save({“name”:”Jack Ma”,”age”:50})<br>WriteResult({ “nInserted” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d2f5b67cb1d3e3e79672”), “name” : “Pony Ma”, “age” : 45 }<br>{ “_id” : ObjectId(“5b90d37fb67cb1d3e3e79673”), “name” : “Jack Ma”, “age” : </p>
+</blockquote>
+<p>当insert插入多条数据的时候，从第二条都不起作用（仅插入第一条）<br>save insert：<br>都可以增加数据<br>如果不含_id，两者作用一样<br>如果字段含有_id<br>insert增加id属性的时候，当集合里面如果有该id所对应的这条数据，插入时会报错；（dup key）<br>save 如果有相同的，则是会修改或覆盖</p>
+<p>update修改</p>
+<blockquote>
+<p>db.py02tab.update({name:”Tom H”},{$set:{name:”IG.wxz”}})<br>修改多条相同（多条”Tom H”）字段值<br>db.py02tab.update({name:”Tom H”},{$set:{name:”IG.wjl”}},false,true)</p>
+</blockquote>
+<blockquote>
+<p>post3={“name”:”Tony”,”age”:50}<br>{ “name” : “Tony”, “age” : 50 }<br>db.py02tab.insert(post3)</p>
+</blockquote>
+<blockquote>
+<p>post3.phone=’12345678901’<br>12345678901<br>db.py02tab.update({name:”Tony”},post3)<br> db.py02tab.find()</p>
+</blockquote>
+<p>{ “_id” : ObjectId(“5b90de07b67cb1d3e3e79674”), “name” : “Tony”, “age” : 50, “ph<br>one” : “12345678901” }</p>
+<h2 id="动态添加字段"><a href="#动态添加字段" class="headerlink" title="动态添加字段"></a>动态添加字段</h2><blockquote>
+<p>post3.firends={“goodfriend”:[“美国队长”,”绿巨人”]}<br>{ “goodfriend” : [ “美国队长”, “绿巨人” ] }<br>db.py02tab.update({name:”Tony”},post3)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90de07b67cb1d3e3e79674”), “name” : “Tony”, “age” : 50, “ph<br>one” : “12345678901”, “firends” : { “goodfriend” : [ “美国队长”, “绿巨人” ] } }<br>post3.firends.badfirend=[“灭霸”]<br>[ “灭霸” ]<br>db.py02tab.update({name:”Tony”},post3)<br>WriteResult({ “nMatched” : 1, “nUpserted” : 0, “nModified” : 1 })<br>db.py02tab.find().pretty()<br>{<br>        “_id” : ObjectId(“5b90de07b67cb1d3e3e79674”),<br>        “name” : “Tony”,<br>        “age” : 50,<br>        “phone” : “12345678901”,<br>        “firends” : {<br>                “goodfriend” : [<br>                        “美国队长”,<br>                        “绿巨人”<br>                ],<br>                “badfirend” : [<br>                        “灭霸”<br>                ]<br>        }</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><blockquote>
+<p>db.grade_1_3.find({uname:{$exists:true}})<br>多条件排序<br>db.grade_1_3.find({name:{$exists:true}}).sort({age:1})</p>
+</blockquote>
+<blockquote>
+<p>for(i=0;i&lt;100000;i++){db.students.insert({name:’test’+i,age:i})}<br>WriteResult({ “nInserted” : 1 })<br>db.students.count()<br>100000<br>db.students.find({name:’test10000’}).explain(‘executionStats’)<br>观察”executionTimeMillis” 后面相对的时间，<br>在db.students.createIndex({name:1})（相当于创建了一个自定义索引）语句条件下，<br>再执行db.students.find({name:’test10000’}).explain(‘executionStats’) 速度会提高很多。</p>
+</blockquote>
+<p>所有的索引</p>
+<blockquote>
+<p>db.students.getIndexes()<br>删除索引（只能删除自定义的索引，不能删除指定的索引）<br>db.students.dropIndexes()</p>
+</blockquote>
+<hr>
+<p>聚合的方式：<br>不显示id(除了id,要么全0，要么全1)</p>
+<blockquote>
+<p>db.pyuser.find({},{_id:0})<br>{ “name” : “Jack Ma”, “age” : 50, “sex” : “m”, “score” : 100 }</p>
+</blockquote>
+<p>根据sex分组进行统计</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$group:{_id:’$sex’,total:{$sum:1}}}])<br>{ “_id” : “f”, “total” : 1 }<br>{ “_id” : “m”, “total” : 4 }<br>根据sex分组求分数平均值<br>db.pyuser.aggregate([{$group:{_id:’$sex’,avg:{$avg:’$score’}}}])<br>{ “_id” : “f”, “avg” : 95 }<br>{ “_id” : “m”, “avg” : 76.25 }<br>根据sex分组求分数最大值<br>db.pyuser.aggregate([{$group:{_id:’$sex’,max:{$max:’$score’}}}])<br>{ “_id” : “f”, “max” : 95 }<br>{ “_id” : “m”, “max” : 100 }<br>根据sex分组统计分数<br>db.pyuser.aggregate([{$group:{_id:’$sex’,scores:{$push:’$score’}}}])<br>{ “_id” : “f”, “scores” : [ 95 ] }<br>{ “_id” : “m”, “scores” : [ 100, 45, 85, 75 ] }<br>根据sex分组统计姓名<br>db.pyuser.aggregate([{$group:{_id:’$sex’,names:{$push:’$name’}}}])<br>{ “_id” : “f”, “names” : [ “董明珠” ] }<br>{ “_id” : “m”, “names” : [ “Jack Ma”, “Pony Ma”, “Robin Li”, “IG wxz” ] }<br>根据sex分组去重<br>db.pyuser.aggregate([{$group:{_id:’$sex’,names:{$addToSet:’$name’}}}])<br>{ “_id” : “f”, “names” : [ “董明珠” ] }<br>{ “_id” : “m”, “names” : [ “IG wxz”, “Robin Li”, “Pony Ma”, “Jack Ma” ] }<br>不分组求分数和<br>db.pyuser.aggregate([{$group:{_id:’null’,totalScore:{$sum:’$score’}}}])</p>
+</blockquote>
+<h2 id="“-id”-“null”-“totalScore”-490"><a href="#“-id”-“null”-“totalScore”-490" class="headerlink" title="{ “_id” : “null”, “totalScore” : 490 }"></a>{ “_id” : “null”, “totalScore” : 490 }</h2><p>管道的概念：<br>管道在Unix和Linux中一般用于将当前命令的输出结果作为下一个条件/命令的参数<br>MongoDB的聚合管道是将MonggoDB文档在一个管道处理完毕后将结果传递给下一个管道处理，管道的操作是可以重复的。</p>
+<p>管道的操作有以下几个：<br>$projict<br>（作用是修改文档的结构，可以用来重命名，增加或删除文档中的字段）</p>
+<blockquote>
+<p>db.pyuser.aggregate({$project:{name:1,score:1,_id:0}})<br>{ “name” : “Jack Ma”, “score” : 100 }<br>{ “name” : “Pony Ma”, “score” : 45 }<br>{ “name” : “Robin Li”, “score” : 85 }<br>{ “name” : “董明珠”, “score” : 95 }<br>{ “name” : “IG wxz”, “score” : 75 }<br>{ “name” : “IG wxz”, “score” : 90 }<br>分数减10（不会改变原表）<br>db.pyuser.aggregate({$project:{_id:0,name:1,score:{$add:[‘$score’,-10]}}})<br>{ “name” : “Jack Ma”, “score” : 90 }<br>{ “name” : “Pony Ma”, “score” : 35 }<br>{ “name” : “Robin Li”, “score” : 75 }<br>{ “name” : “董明珠”, “score” : 85 }<br>{ “name” : “IG wxz”, “score” : 65 }<br>{ “name” : “IG wxz”, “score” : 80 }<br>表中原分数和减10之后<br>db.pyuser.aggregate({$project:{_id:0,name:1,score:1,addScore:{$add:[‘$score’,-10]}}})<br>{ “name” : “Jack Ma”, “score” : 100, “addScore” : 90 }<br>{ “name” : “Pony Ma”, “score” : 45, “addScore” : 35 }<br>{ “name” : “Robin Li”, “score” : 85, “addScore” : 75 }<br>{ “name” : “董明珠”, “score” : 95, “addScore” : 85 }<br>{ “name” : “IG wxz”, “score” : 75, “addScore” : 65 }<br>{ “name” : “IG wxz”, “score” : 90, “addScore” : 80 }</p>
+</blockquote>
+<p>$match<br>作用于过滤文档，相当于find()第一个参数<br>注意：<br>1）$match中不能和$where表达式混合使用<br>2）如果$match位于管道的第一个阶段，可以利用索引提高查询速度<br>3）$match尽量出现在管道的最前面，过滤出需要的数据，在后续的阶段中可以提高效率<br>4）$match中使用 $text操作符的话，只能位于管道的第一阶段</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$match:{score:{$gt:80,$lt:100}}},{$group:{_id:’$sex’,cou<br>nt:{$sum:1}}}])<br>{ “_id” : “f”, “count” : 1 }<br>{ “_id” : “m”, “count” : 2 }</p>
+</blockquote>
+<p>$sort(-1倒序)</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$sort:{score:1}}])</p>
+</blockquote>
+<p>$limit(取前两条)</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$limit:2}])</p>
+</blockquote>
+<p>$skip（跳过前两条）</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$skip:2}])</p>
+</blockquote>
+<p>表达运算操作符：<br>$or、$nor、$not、$and<br>比较运算操作符<br>$ne、$eq、$lt、$gte、$lte<br>既不是90又不是f</p>
+<blockquote>
+<p>db.pyuser.aggregate([{$project:{_id:0,name:1,sex:1,score:1,yesorno:{$and:[{$ne<br>:[‘$score’,90]},{$ne:[‘$sex’,’f’]}]}}}])<br>{ “name” : “Jack Ma”, “sex” : “m”, “score” : 100, “yesorno” : true }<br>{ “name” : “Pony Ma”, “sex” : “m”, “score” : 45, “yesorno” : true }<br>{ “name” : “Robin Li”, “sex” : “m”, “score” : 85, “yesorno” : true }<br>{ “name” : “董明珠”, “sex” : “f”, “score” : 95, “yesorno” : false }<br>{ “name” : “IG wxz”, “sex” : “m”, “score” : 75, “yesorno” : true }<br>{ “name” : “IG wxz”, “sex” : “m”, “score” : 90, “yesorno” : false }<br>既不是90又是f<br>db.pyuser.aggregate([{$project:{_id:0,name:1,sex:1,score:1,yesorno:{$and:[{$ne<br>:[‘$score’,90]},{$eq:[‘$sex’,’f’]}]}}}])<br>{ “name” : “Jack Ma”, “sex” : “m”, “score” : 100, “yesorno” : false }<br>{ “name” : “Pony Ma”, “sex” : “m”, “score” : 45, “yesorno” : false }<br>{ “name” : “Robin Li”, “sex” : “m”, “score” : 85, “yesorno” : false }<br>{ “name” : “董明珠”, “sex” : “f”, “score” : 95, “yesorno” : true }<br>{ “name” : “IG wxz”, “sex” : “m”, “score” : 75, “yesorno” : false }<br>{ “name” : “IG wxz”, “sex” : “m”, “score” : 90, “yesorno” : false }</p>
+</blockquote>
+<blockquote>
+<p>db.createCollection(‘pytimer’)<br>{ “ok” : 1 }<br>product={‘name’:’大骨方便面’,’price’:10,’date’:new Date()}<br>{<br>        “name” : “大骨方便面”,<br>        “price” : 10,<br>        “date” : ISODate(“2018-09-10T03:31:51.481Z”)<br>}<br>db.pytimer.insert(product)<br>WriteResult({ “nInserted” : 1 })<br>db.pytimer.aggregate([{$project:{year:{$year:’$date’}}}])<br>{ “_id” : ObjectId(“5b95e60654ddec579d2a7973”), “year” : 2018 }<br>db.pytimer.aggregate([{$project:{year:{$year:’$date’},hour:{$hour:’$date’}}}])<br>{ “_id” : ObjectId(“5b95e60654ddec579d2a7973”), “year” : 2018, “hour” : 3 }<br>聚合管道的优化<br>这是一个策略<br>1）将$match和$sort放到管道的前面，可以给集合建立索引，提高处理数据的速率<br>2）可以使用$match $limit $skip对文档进行提前过滤</p>
+</blockquote>
+<p>阶段优化<br>1）$sort+$match<br>顺序优化<br>如果$match在$sort之后，优化器会自动将$match放到$sort之前</p>
+<p>2）$limit+$skip<br>如果$skip在$limit之前，优化器会自动将$limit放到$skip之前<br>移动后的$limit的值等于原来的值加上$skip的值<br>eg:skip 10 limit 5======&gt;limit 15 skip 10</p>
+<p>聚合管道的作用就是 对返回结果大小和内存限制</p>
+<p>MongoDB对返回结果大小的限制<br>返回一个文档的大小不能超过16M 这是MOngoDb2.6之前规定的<br>2.6之后返回的结果可以是一个游标或者存到集合中，返回不再受制16M</p>
+<p>内存的要求<br>管道每一个阶段 只能使用100M的内存<br>如果操作100M会报错，如果处理大数据时，可以使用allowDiskUse选项，将数据存到磁盘上</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/10/python-10/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python-9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1077,78 +1313,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/12/Python-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/12/Python/">Python基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/12/Python/" class="archive-article-date">
-  	<time datetime="2018-07-12T00:19:15.305Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、编码："><a href="#1、编码：" class="headerlink" title="1、编码："></a>1、编码：</h2><p>在开发过程，对应不同的语言使用不同的字符编码。<br>英文    ISO-8859-1<br>中文    gbk或gb2312<br>目前Python为了统一编码格式，在3.0以上的版本使用了utf-8编码</p>
-<h2 id="2、print-函数"><a href="#2、print-函数" class="headerlink" title="2、print()函数"></a>2、print()函数</h2><p>语法格式：print(value,…,sep=’ ‘,end=’\n’)<br>其中，value代表我们要输出的内容，可以是字符串，可以是数值等内容<br>sep代表输出多个值之间的间隔符，默认使用空格隔开。我们可以重新定义间隔符。<br>end代表输出语句的结束标识，默认使用了换行，我们可以重新定义其他内容，其输出的内容将不再进行换行操作。</p>
-<h2 id="3、print-函数的基本使用"><a href="#3、print-函数的基本使用" class="headerlink" title="3、print()函数的基本使用"></a>3、print()函数的基本使用</h2><p>print()常用输出方式：<br>print(‘hello ‘)、print(123456)等<br>参数格式输出<br>%s：代表了字符串内容，其中<br>print(‘welcome %s’%Beijing)=&gt;welcome Beijing<br>print(‘welcome %10.3s’%Beijing)=&gt;welcome       Bei,输出结果为10个字符其中包含字符串Beijing中前三个，其余用空格填充<br>%d：代表了整数内容，其中<br>print(‘price %d’%10)=&gt;price 10<br>print(‘price %d’%10.5) =&gt; price 10<br>print(‘price %3d’%10000)=&gt; price 10000<br>注意这里面的3d表示输出一个宽度为3个单元的数值，如果数值长度小于三，那么数值靠右对齐。<br>-3d表示，数值反向对齐（靠左对齐）<br>%f：代表了浮点数内容(注意，在Python中浮点数是一个近似值，所以结果也是近似)<br>print(‘price %f’%10.2)=&gt;10.200000<br>print(‘price %.1f’%10.2) =&gt; 10.2<br>print(‘prince %.1f’%10.58) = &gt;10.6 当取一位小数位的时候，将小数位第二位进行舍入操作，但是Python的中间值不是5，导致当小数位第二位是5时，直接被舍去<br>print(‘%5.1f’%10.3) =&gt; 10.3<br>输出一个宽度为5的单位，其中整数3位，小数部分1位，小数点占一位</p>
-<h2 id="4、格式化输出"><a href="#4、格式化输出" class="headerlink" title="4、格式化输出"></a>4、格式化输出</h2><p>在Python3.0之后，推荐使用{0}来代替前期的%d,%s,%f等一系列的格式化参数，采用了字符串的format函数进行处理。写法如下：<br>print(‘welcome {0}同学，加入{1}班级’.format(‘tom’,’Python3班’))<br>其中{0}，{1}分别映射format()中的’tom’和’Python3班’，如果前面占位符中的索引值变化，那么他们映射的值也随之变化</p>
-<h2 id="5、变量"><a href="#5、变量" class="headerlink" title="5、变量"></a>5、变量</h2><h3 id="1）变量的声明："><a href="#1）变量的声明：" class="headerlink" title="1）变量的声明："></a>1）变量的声明：</h3><p>在Python没有变量类型，直接进行变量的声明，比如：i = 10</p>
-<h3 id="2-变量的赋值："><a href="#2-变量的赋值：" class="headerlink" title="2)变量的赋值："></a>2)变量的赋值：</h3><p>在python中，有两种赋值方式<br>第一种，单个变量赋值  name = ‘tom’<br>第二种，多个变量同时赋值  name, age, sex = ‘tom’， 23， ‘男’</p>
-<h3 id="3）变量在内存中的存在情况"><a href="#3）变量在内存中的存在情况" class="headerlink" title="3）变量在内存中的存在情况"></a>3）变量在内存中的存在情况</h3><p>python中的变量，在声明和赋值时，不仅声明了变量的名字同时还为这个变量指向了内存中的地址，该地址用来存储变量的值。<br>python中整数、字符串、浮点数等其本身都属于常量，所以当赋值给一个变量时，如：<br>i = 10意味着将10这个常量在内存中的地址指向，因此，i = 10 ，j = 10 使用id(i),id(j）我们法向他们的id是相同的。<br>因为，他们的值10在内存中的地址时相同的。</p>
-<h3 id="4）变量与内存地址"><a href="#4）变量与内存地址" class="headerlink" title="4）变量与内存地址"></a>4）变量与内存地址</h3><p>当我们声明一个变量时，对其进行赋值。实际上就是将变量值所在的内存地址，赋值给该变量。也就是说这个变量指向其值所在的内存地址。<br>当我们改变变量的值的时候，说白了就是将变量指向的内存地址进行变化。<br>举例：我们日常购买商品，快递员通过你的邮寄地址将快递送到你本人手里。可以理解为，快递员拥有指向你这个变量的地址，通过地址，将快递商品赋值给你。</p>
-<h3 id="5）变量与常量"><a href="#5）变量与常量" class="headerlink" title="5）变量与常量"></a>5）变量与常量</h3><p>变量：我们认为其内容是临时结果，可变的。供后续的程序代码进行调用。<br>常量：我们认为其内容是不变的，或者在程序运行的过程中也不发生改变。<br>在Python中，我们通过大写变量名，来表明这是一个常量，比如：CARDID = ‘12048377293’</p>
-<h3 id="6-变量命名规则"><a href="#6-变量命名规则" class="headerlink" title="6)变量命名规则"></a>6)变量命名规则</h3><p>首先，Python中的变量命名，必须由字母、数字或下划线三者组成，不能有其他的字符出现<br>其次，变量名的首个字符，必须是字母或下划线<br>然后，Python中的关键字不能作为变量名来使用，常用的关键字诸如：if,for,is,none等等。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/12/Python/">展开全文 >></a>
         </p>
       
 
