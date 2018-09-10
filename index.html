@@ -197,58 +197,56 @@
 <blockquote>
 <p>db.pyuser.find().pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
 </blockquote>
-<p>数据库的操作方法<br>db.py06db.help()</p>
-<p>去重</p>
+<p><code>数据库的操作方法</code><br>db.py06db.help()</p>
+<p><code>去重</code></p>
 <blockquote>
 <p>db.pyuser.distinct(‘name’)<br>[ “Pony Ma”, “Jack Ma” ]</p>
 </blockquote>
-<p>通过条件进行匹配</p>
+<p><code>通过条件进行匹配</code></p>
 <blockquote>
 <p>db.pyuser.find({age:45})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
 </blockquote>
-<p>大于（小于是$lt）</p>
+<p><code>大于（小于是$lt）</code></p>
 <blockquote>
 <p>db.pyuser.find({age:{$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
-<p>小于55，大于45岁（，表示并且的意思）</p>
+<p><code>小于55，大于45岁（，表示并且的意思）</code></p>
 <blockquote>
 <p>db.pyuser.find({age:{$lt:55,$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
-<p>比较运算符(在mongodb中必须加$)<br>lt &lt;<br>gt &gt;<br>lte &lt;=<br>gte &gt;=</p>
-<p>通过关键字查询</p>
+<p><code>比较运算符(在mongodb中必须加$)</code><br>lt &lt;<br>gt &gt;<br>lte &lt;=<br>gte &gt;=</p>
+<p><code>通过关键字查询</code></p>
 <blockquote>
 <p>db.pyuser.find({name:/Ma/}).pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
 </blockquote>
-<p>查询名字以J开头的</p>
+<p><code>查询名字以J开头的</code></p>
 <blockquote>
 <p>db.pyuser.find({name:/^J/}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
-<p>只取字段name（1表示True）（第一个{}为查询条件）</p>
+<p><code>只取字段name（1表示True）（第一个{}为查询条件）</code></p>
 <blockquote>
 <p>db.pyuser.find({},{name:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma” }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma” }</p>
 </blockquote>
-<p>查询除了name的字段值 （false等同于0）</p>
+<p><code>查询除了name的字段值 （false等同于0）</code></p>
 <blockquote>
 <p>db.pyuser.find({},{name:false})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “age” : 45, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “age” : 50 }<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
 </blockquote>
-<p>显示name和age</p>
+<p><code>显示name和age</code></p>
 <blockquote>
-<p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45 }</p>
+<p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45 }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
 </blockquote>
-<p>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
-<p>查询满足条件的指定字段</p>
+<p><code>查询满足条件的指定字段</code></p>
 <blockquote>
 <p>db.pyuser.find({age:50},{name:1,age:1})<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
 </blockquote>
-<p>排序（1表示升序，-1表示降序）</p>
+<p><code>排序（1表示升序，-1表示降序）</code></p>
 <blockquote>
-<p>db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
+<p>db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”}<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,”sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
 </blockquote>
-<p>查询前三条信息</p>
+<p><code>查询前三条信息</code></p>
 <blockquote>
-<p>db.pyuser.find().limit(3)<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
+<p>db.pyuser.find().limit(3)<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
 </blockquote>
-<p>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
 <p>第三条以后的数据</p>
 <blockquote>
 <p>db.pyuser.find().skip(3)</p>
