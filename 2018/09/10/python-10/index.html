@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MongoDB | 记录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态  db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects”">
+  <meta name="description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态 db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects” :">
 <meta name="keywords" content="Python、爬虫、Web开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB">
 <meta property="og:url" content="http://yoursite.com/2018/09/10/python-10/index.html">
 <meta property="og:site_name" content="记录">
-<meta property="og:description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态  db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects”">
+<meta property="og:description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态 db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects” :">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-10T12:39:41.952Z">
+<meta property="og:updated_time" content="2018-09-10T12:52:41.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB">
-<meta name="twitter:description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态  db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects”">
+<meta name="twitter:description" content="$ winpty mongo 查看数据库show dbs 新建（选中）数据库use py06db 查看使用的数据库db 没有集合的话不会有提示show collections 查看当前指定数据库状态 db.stats(){        “db” : “py06db”,        “collections” : 0,        “views” : 0,        “objects” :">
   
     <link rel="alternative" href="/atom.xml" title="记录" type="application/atom+xml">
   
@@ -180,105 +180,89 @@
 <p><code>新建（选中）数据库</code><br>use py06db</p>
 <p><code>查看使用的数据库</code><br>db</p>
 <p><code>没有集合的话不会有提示</code><br>show collections</p>
-<p><code>查看当前指定数据库状态</code></p>
-<blockquote>
+<h4 id="查看当前指定数据库状态"><a href="#查看当前指定数据库状态" class="headerlink" title="查看当前指定数据库状态"></a>查看当前指定数据库状态</h4><blockquote>
 <p>db.stats()<br>{<br>        “db” : “py06db”,<br>        “collections” : 0,<br>        “views” : 0,<br>        “objects” : 0,<br>        “avgObjSize” : 0,<br>        “dataSize” : 0,<br>        “storageSize” : 0,<br>        “numExtents” : 0,<br>        “indexes” : 0,<br>        “indexSize” : 0,<br>        “fileSize” : 0,<br>        “fsUsedSize” : 0,<br>        “fsTotalSize” : 0,<br>        “ok” : 1<br>}</p>
 </blockquote>
 <p><code>查看当前数据库的连接端口号</code><br>db.getMongo()<br>connection to 127.0.0.1:27017</p>
 <p><code>创建Collection</code><br>db.createCollection(“pyuser”)<br>{ “ok” : 1 }</p>
 <p><code>查看所有集合</code><br> show collections</p>
-<p><code>添加数据</code></p>
-<blockquote>
+<h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><blockquote>
 <p>post={“name”:”Pony Ma”, “age”:45, “sex”:”M”, “marry”:true, “date”:new Date()}<br>{<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
 </blockquote>
-<p><code>插入数据</code></p>
-<blockquote>
+<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><blockquote>
 <p>db.pyuser.insert(post)<br>WriteResult({ “nInserted” : 1 })</p>
 </blockquote>
-<p><code>将其格式化使其变的可视化</code></p>
-<blockquote>
+<h4 id="将其格式化使其变的可视化"><a href="#将其格式化使其变的可视化" class="headerlink" title="将其格式化使其变的可视化"></a>将其格式化使其变的可视化</h4><blockquote>
 <p>db.pyuser.find().pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
 </blockquote>
 <p><code>数据库的操作方法</code><br>db.py06db.help()</p>
-<p><code>去重</code></p>
-<blockquote>
+<h4 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h4><blockquote>
 <p>db.pyuser.distinct(‘name’)<br>[ “Pony Ma”, “Jack Ma” ]</p>
 </blockquote>
-<p><code>通过条件进行匹配</code></p>
-<blockquote>
+<h4 id="通过条件进行匹配"><a href="#通过条件进行匹配" class="headerlink" title="通过条件进行匹配"></a>通过条件进行匹配</h4><blockquote>
 <p>db.pyuser.find({age:45})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
 </blockquote>
-<p><code>大于（小于是$lt）</code></p>
-<blockquote>
+<h4 id="大于（小于是-lt）"><a href="#大于（小于是-lt）" class="headerlink" title="大于（小于是$lt）"></a>大于（小于是$lt）</h4><blockquote>
 <p>db.pyuser.find({age:{$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
-<p><code>小于55，大于45岁（，表示并且的意思）</code></p>
-<blockquote>
+<h4 id="小于55，大于45岁（，表示并且的意思）"><a href="#小于55，大于45岁（，表示并且的意思）" class="headerlink" title="小于55，大于45岁（，表示并且的意思）"></a>小于55，大于45岁（，表示并且的意思）</h4><blockquote>
 <p>db.pyuser.find({age:{$lt:55,$gt:45}}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
 <p><code>比较运算符(在mongodb中必须加$)</code><br>lt &lt;<br>gt &gt;<br>lte &lt;=<br>gte &gt;=</p>
-<p><code>通过关键字查询</code></p>
-<blockquote>
+<h4 id="通过关键字查询"><a href="#通过关键字查询" class="headerlink" title="通过关键字查询"></a>通过关键字查询</h4><blockquote>
 <p>db.pyuser.find({name:/Ma/}).pretty()<br>{<br>        “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”),<br>        “name” : “Pony Ma”,<br>        “age” : 45,<br>        “sex” : “M”,<br>        “marry” : true,<br>        “date” : ISODate(“2018-09-06T01:06:02.422Z”)<br>}</p>
 </blockquote>
-<p><code>查询名字以J开头的</code></p>
-<blockquote>
+<h4 id="查询名字以J开头的"><a href="#查询名字以J开头的" class="headerlink" title="查询名字以J开头的"></a>查询名字以J开头的</h4><blockquote>
 <p>db.pyuser.find({name:/^J/}).pretty()<br>{<br>        “_id” : ObjectId(“5b9085d3ef196108305be9c1”),<br>        “name” : “Jack Ma”,<br>        “age” : 50<br>}</p>
 </blockquote>
-<p><code>只取字段name（1表示True）（第一个{}为查询条件）</code></p>
-<blockquote>
+<h4 id="只取字段name（1表示True）（第一个-为查询条件）"><a href="#只取字段name（1表示True）（第一个-为查询条件）" class="headerlink" title="只取字段name（1表示True）（第一个{}为查询条件）"></a>只取字段name（1表示True）（第一个{}为查询条件）</h4><blockquote>
 <p>db.pyuser.find({},{name:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma” }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma” }</p>
 </blockquote>
-<p><code>查询除了name的字段值 （false等同于0）</code></p>
-<blockquote>
+<h4 id="查询除了name的字段值-（false等同于0）"><a href="#查询除了name的字段值-（false等同于0）" class="headerlink" title="查询除了name的字段值 （false等同于0）"></a>查询除了name的字段值 （false等同于0）</h4><blockquote>
 <p>db.pyuser.find({},{name:false})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “age” : 45, “sex” : “M”, “marry”<br> : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “age” : 50 }<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
 </blockquote>
-<p><code>显示name和age</code></p>
-<blockquote>
+<h4 id="显示name和age"><a href="#显示name和age" class="headerlink" title="显示name和age"></a>显示name和age</h4><blockquote>
 <p>db.pyuser.find({},{name:1,age:1})<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45 }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
 </blockquote>
-<p><code>查询满足条件的指定字段</code></p>
-<blockquote>
+<h4 id="查询满足条件的指定字段"><a href="#查询满足条件的指定字段" class="headerlink" title="查询满足条件的指定字段"></a>查询满足条件的指定字段</h4><blockquote>
 <p>db.pyuser.find({age:50},{name:1,age:1})<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }</p>
 </blockquote>
-<p><code>排序（1表示升序，-1表示降序）</code></p>
-<blockquote>
+<h4 id="排序（1表示升序，-1表示降序）"><a href="#排序（1表示升序，-1表示降序）" class="headerlink" title="排序（1表示升序，-1表示降序）"></a>排序（1表示升序，-1表示降序）</h4><blockquote>
 <p>db.pyuser.find().sort({age:1})<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”}<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,”sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }</p>
 </blockquote>
-<p><code>查询前三条信息</code></p>
+<p>####查询前三条信息</p>
 <blockquote>
 <p>db.pyuser.find().limit(3)<br>{ “_id” : ObjectId(“5b907d87b67cb1d3e3e79663”), “name” : “Pony Ma”, “age” : 45,<br>“sex” : “M”, “marry” : true, “date” : ISODate(“2018-09-06T01:06:02.422Z”) }<br>{ “_id” : ObjectId(“5b9085d3ef196108305be9c1”), “name” : “Jack Ma”, “age” : 50 }<br>{ “_id” : ObjectId(“5b9086bbef196108305be9c2”), “uname” : “托尼”, “uage” : “40”<br>}</p>
 </blockquote>
-<p>第三条以后的数据</p>
+<p><code>第三条以后的数据</code></p>
 <blockquote>
 <p>db.pyuser.find().skip(3)</p>
 </blockquote>
-<p>从第三条开始再查询三条数据</p>
+<p><code>从第三条开始再查询三条数据</code></p>
 <blockquote>
 <p>db.pyuser.find().skip(3).limit(3)</p>
 </blockquote>
-<p>查看所有45岁的</p>
+<p><code>查看所有45岁的</code></p>
 <blockquote>
 <p>db.pyuser.find({$or:[{age:45}]})</p>
 </blockquote>
-<p>统计数据总条数（默认最大显示20条，it可显示剩余信息）</p>
+<p><code>统计数据总条数（默认最大显示20条，it可显示剩余信息）</code></p>
 <blockquote>
 <p>db.pyuser.count()<br>8</p>
 </blockquote>
-<p>查询满足条件的有多少条信息</p>
+<p><code>查询满足条件的有多少条信息</code></p>
 <blockquote>
 <p>db.pyuser.find({age:45}).count()<br>6</p>
 </blockquote>
-<p>删表</p>
+<p><code>删表</code></p>
 <blockquote>
 <p>db.py01tab.drop()<br>true</p>
 </blockquote>
-<hr>
 <p>设置固定大小的集合(capped:true固定表，remove不能删除一个固定表）（数据先进先出）</p>
 <blockquote>
-<p>db.createCctio(‘py01tab’{capped:true,size:1024,max:3})<br>{ “ok” : 1 }<br>添加数据<br>db.py01tab.insert({“name”:”one”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”two”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”three”})<br>WriteResult({ “nInserted” : 1 })<br>查看<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d176b67cb1d3e3e7966e”), “name” : “one” }<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }<br>db.py01tab.insert({“name”:”four”})<br>WriteResult({ “nInserted” : 1 })<br>第一条数据被新加的数据顶出<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }</p>
+<p>db.createCctio(‘py01tab’{capped:true,size:1024,max:3})<br>{ “ok” : 1 }<br>添加数据<br>db.py01tab.insert({“name”:”one”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”two”})<br>WriteResult({ “nInserted” : 1 })<br>db.py01tab.insert({“name”:”three”})<br>WriteResult({ “nInserted” : 1 })<br>查看<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d176b67cb1d3e3e7966e”), “name” : “one” }<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }<br>db.py01tab.insert({“name”:”four”})<br>WriteResult({ “nInserted” : 1 })<br>第一条数据被新加的数据顶出<br>db.py01tab.find()<br>{ “_id” : ObjectId(“5b90d187b67cb1d3e3e7966f”), “name” : “two” }<br>{ “_id” : ObjectId(“5b90d18fb67cb1d3e3e79670”), “name” : “three” }<br>{ “_id” : ObjectId(“5b90d1b3b67cb1d3e3e79671”), “name” : “four” }</p>
 </blockquote>
-<h2 id="“-id”-ObjectId-“5b90d1b3b67cb1d3e3e79671”-“name”-“four”"><a href="#“-id”-ObjectId-“5b90d1b3b67cb1d3e3e79671”-“name”-“four”" class="headerlink" title="{ “_id” : ObjectId(“5b90d1b3b67cb1d3e3e79671”), “name” : “four” }"></a>{ “_id” : ObjectId(“5b90d1b3b67cb1d3e3e79671”), “name” : “four” }</h2><p>插入数据<br>表和数据一起创建（insert）</p>
+<p>插入数据<br>表和数据一起创建（insert）</p>
 <blockquote>
 <p>db.py02tab.insert({“name”:”Pony Ma”,”age”:45})<br>WriteResult({ “nInserted” : 1 })<br>db.py02tab.find()<br>{ “_id” : ObjectId(“5b90d2f5b67cb1d3e3e79672”), “name” : “Pony Ma”, “age” : 45 }</p>
 </blockquote>
